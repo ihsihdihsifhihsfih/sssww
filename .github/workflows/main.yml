@@ -1,0 +1,19 @@
+name: Run Earn
+on:
+  workflow_dispatch:
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repo
+        uses: actions/checkout@v2
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'    
+      - name: Install requirements
+        run: pip install websocket-client Flask Gunicorn rel newrelic     
+      - name: Running the Python script
+        run: python main.py
+        
+      
